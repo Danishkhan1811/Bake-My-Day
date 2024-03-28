@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-vng*ztwf#=9me2t%=y4$c$k@4(oqiby=p!sk$sr&891ea#63^+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://localhost:5173',
+                 '127.0.0.1']
 
 
 # Application definition
@@ -53,8 +54,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
-CORS_ALLOW_ALL_ORIGIN = True
-
+# CORS_ALLOW_ALL_ORIGIN = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    ]
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
@@ -89,7 +92,9 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+CORS_ALLOW_ALL_ORIGIN = True
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use database-backed sessions
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -108,6 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'auth.User'
 
 
 # Internationalization
@@ -131,3 +138,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEBUG = True
