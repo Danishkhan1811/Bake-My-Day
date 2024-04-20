@@ -10,5 +10,8 @@ urlpatterns = [
     path('users/<str:username>/', users_db_operations.as_view(), name='user_detail'),
     path('login/',LoginView.as_view(), name='login'),
     path('logout/',LogoutView.as_view(), name='login'),
-    path('products/',productView.as_view(),name='productView')
+    path('products/',productView.as_view(),name='productView'),
+    path('cart/',CartItems.as_view(),name='CartItems'),
+    path('confirm-order/',ConfirmOrder.as_view(), name='ConfirmOrder')
+
 ]

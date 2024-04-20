@@ -25,5 +25,27 @@ class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=100)
     description = models.TextField()
-    image_path = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='assets/',null=True, blank=True)
+    price = models.IntegerField()
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product_name = models.CharField(max_length=100)
+    quantity = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    ordered = models.BooleanField(default=False)
+
+    def total_price(self):
+        return self.quantity * self.product.price
+class Orders(models.Model):
+    order_id = models.AutoField(primary_key=True)
+    cart_item_id = models.IntegerField()
+    # cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    product_id = models.IntegerField(default=0)
+    user_id = models.IntegerField()
+    order_date = models.DateTimeField(auto_now_add=True)
+    amount = models.IntegerField()
+    customer_name = models.CharField(max_length=250, default=0)
+    contact = models.CharField(max_length=10,default=0)
+    address = models.TextField(default=5)
