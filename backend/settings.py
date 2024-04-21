@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-vng*ztwf#=9me2t%=y4$c$k@4(oqiby=p!sk$sr&891ea#63^+
 DEBUG = True
 
 ALLOWED_HOSTS = ['http://localhost:5173',
+                 'http://localhost:5174',
                  '127.0.0.1']
 
 # Application definition
@@ -57,9 +58,10 @@ MIDDLEWARE = [
 # CORS_ALLOW_ALL_ORIGIN = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'http://localhost:5174',
     ]
 
-CSRF_TRUSTED_ORIGNS = ['http://localhost:5173']
+CSRF_TRUSTED_ORIGNS = ['http://localhost:5173','http://localhost:5174']
 
 ROOT_URLCONF = 'backend.urls'
 

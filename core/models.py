@@ -49,3 +49,20 @@ class Orders(models.Model):
     customer_name = models.CharField(max_length=250, default=0)
     contact = models.CharField(max_length=10,default=0)
     address = models.TextField(default=5)
+    is_complete = models.BooleanField(default=False)
+
+class CustomOrders(models.Model):
+    cake_flavor = models.CharField(max_length=100)
+    filling = models.CharField(max_length=100, blank=True, null=True)
+    frosting = models.CharField(max_length=100)
+    decoration_style = models.CharField(max_length=100)
+    color_scheme = models.CharField(max_length=100)
+    message_on_cake = models.CharField(max_length=100)
+    dietary_restrictions = models.CharField(max_length=100, blank=True, null=True)
+    special_instructions = models.TextField()
+    name = models.CharField(max_length=100)
+    contact = models.CharField(max_length=100)
+    address = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.name}'s Cake Order"
